@@ -1,0 +1,22 @@
+name: Challenge Chapter 3
+
+env:
+  ARTIFACT_NAME: 'Johns new artifact'
+
+on: [push]
+
+jobs:
+  artifact_job:
+    name: My job for challenge chap3
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Check out repo to runner
+        uses: actions/checkout@v4
+
+      - name: Upload artifact to GitHub
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.ARTIFACT_NAME }}
+          path: .       # Specify entire repo that is checked out
